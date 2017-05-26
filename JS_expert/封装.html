@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			function Fn(n,g){
+				var _name=n;				//封装时所有初始化属性和方法都是私有的,var定义是用下划线开头 区分
+				var _age=g;					//需要暴露都才暴露.
+				this.action=function(){
+					console.log(_name,_age)
+				}
+				//return _action();
+			}
+			Fn.prototype.actions=function(){
+				console.log("0.0")
+			}
+			var fn=new Fn("小米",18)
+			fn.action();
+			fn.actions();
+			console.log("**************************************************************************");
+			var Fn1=(function(){
+				var _Fn1 = function (n,g){
+					var _name=n;				
+					var _age=g;
+					var _action=function(){
+						console.log(_name,_age)
+					}
+					// 特权方法 :  setter & getter
+					this.getname=function (){			//定义需要暴露的
+						return _name;
+					}
+					this.setname=function(name){		//定义特权,根据实际的需要,对外暴露
+						return _name=name;
+					}
+					this.getage=function (){
+						return _age;
+					}
+					this.setage=function(age){
+						return _age=age;
+					}
+				}
+				_Fn1.prototype.share=function(){
+					console.log(this.getname(),this.getage())
+				}
+				return _Fn1;//闭包的封装  //返回一个类个Fn1
+				/*
+				  总结:
+				  
+				  	1. 把所有的资源(属性和方法全部私有化)
+				  	2. 定义特权,根据实际的需要,对外暴露
+				  	3. 按照特权方法来实现对象
+				 */
+				
+			  /*总结:
+			  
+			  	1. 一个类的定义分为2部分: "构造器"和"原型"
+			  	2. 基于闭包的方式,把"构造器"的定义和"原型"的定义打包了,实现了对代码的封装优化
+			  */
+			})();
+			console.log(new Fn1("魅族",17).setname("锤子"));
+			new Fn1("魅族",17).share();
+			
+		</script>
+	</body>
+</html>

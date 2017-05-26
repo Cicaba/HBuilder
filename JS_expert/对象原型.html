@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			方法过载
+			1.每一个新建的对象,方法都是一个新的函数(内存泄漏)
+		-->
+		<script type="text/javascript" charset="utf-8">
+			//对象的原型(prototype)是一个object对象
+			function Fn(name,age){
+				this.name=name;
+				this.age=age;
+				this.fn=function(){
+					console.log(this.name,this.age);
+				}
+			}
+			var Fn1 = new Fn("小明","20")
+			Fn1.fn();
+			/*
+			   1. 函数对象上,都有一个prototype属性,这是一个普通对象. 这个对象是用来描述当前类(通用不变)的特征
+			   	  类  Person{
+			   	  	
+			   	  	 constructor() // 自动有一个,构造函数
+			   	  }
+			   	  
+			   2. 原型是一个对象, 为原型定义的"属性"和"方法",能够在当前类型的实例下,共享!!
+			   
+			   3. 对象属性和方法的定义,来自2个地方
+			   		1) 构造函数 (每次定义,都会发生改变的)
+			   		2) 原型        (每个对象实例,都相同(不会改变)的一些特征)
+			   
+			   4. 属性的查询优先级,原生的属性和方法,高于原型来的属性和方法
+			   	  1) 从上到下,就近原则
+			   	  2) 查找的规则是基于"原型链"查找!!
+			   
+			 * */
+			
+			// 原型的定义是为了让每一个实例共享
+			Fn.prototype.a=90;
+			console.debug(Fn1);
+			console.debug(Fn1.a);
+			console.debug(Fn.prototype);
+			console.debug(Fn1.__proto__);
+			/* *
+			   总结:
+			   
+			   	1. 每一个构造函数上,都有一个prototype的属性;每一个对象实例上,都有一个__proto__属性.
+			   	2. 每一个实例的__proto__属性值,是指向类类型下的prototype属性,意味:让每个实例,拥有这个类型的共有特征.(__proto__属性是原型prototype属性的一个引用)
+			   	3. 虽然原型来的属性和方法都放在__proto__属性上,但是访问都只需要 ==> 对象.属性名(基于原型链的查找)
+			 * */
+			var arr=[10,20,30];
+			Array.prototype.he=function(){
+				var jihe=0;
+				for (var i = 0; i < this.length; i++) {
+					jihe+=this[i]
+				}
+				return jihe;
+			}
+			console.log(arr.he());
+			/*
+			   总结:
+			   
+			   	1.原型的使用,更多就是用在(内置)对象的扩展
+			   	
+			   	2.如果对原型进行修改,那么所有(包括已经创建的)实例,都会体现出最新的特征.
+			 * */
+		</script>
+	</body>
+</html>

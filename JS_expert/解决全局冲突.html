@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.12.4.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			console.log($);
+			var jq=$.noConflict(true); // 解绑$和jQuery,把jQuery挂到了全局的j属性
+			console.log(jq);
+			(function($){				//用闭包的方式解决不能使用$.
+				console.log($);
+			})(jq);
+		</script>
+	</body>
+</html>

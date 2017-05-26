@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			/*
+			 *  需求:
+			 * 		定义一个阶乘函数,实现对指定数据的阶乘效果,并返回结果
+			 */
+			function fn(n){
+				if(n>1){
+					var ji=n*arguments.callee(n-1);
+					return ji;
+				}else{
+					return n;
+				}
+			};
+			console.log(fn(9));
+			/*
+			 * 总结:
+			 * 
+			 * 		arguments对象上有一个callee方法,可以动态获取当前函数名称(对应的函数体)
+			 * 		arguments.callee通常用在递归.
+			 * */
+		</script>
+	</body>
+</html>

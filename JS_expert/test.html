@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" charset="utf-8" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			var a=(function(){
+				var a=1		//在匿名函数内定义的变量不会污染全局.
+				return a;
+			}())
+			console.log(a);
+			console.log($);
+		</script>
+		<iframe src=""></iframe>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		1.简述什么是原型
+		prototype是函数上的一个属性.也是一个对象.
+		在prototype上定义属性或方法可以共享.
+		prototype一般用来扩展内置对象.
+		
+		
+		2.简述__proto__和prototype属性的关系和不同。
+		__proto__是对象上的一个属性,它指向对象上的原型.
+		不同点:函数对象除了有属性__proto__,还有属性prototype，而prototype指向该函数的原型对象
+		
+		<script type="text/javascript" charset="utf-8">
+			//3.扩展Array类型，提供inArray方法用来检查数组中是否包含某个特定值
+			var arr=[1,2,3,4,5];
+			Array.prototype.inArray=function(val){
+				for (var i = 0; i < this.length; i++) {
+					if(this[i]==val){
+						return true;
+					}
+				}
+				return false;
+			};
+			console.log(arr.inArray(5));
+			//4.基于面向对象思想，创建一个“人”类
+			function Person(n,h,w,s,id){
+				this.name=n;
+				this.height=h+"cm";
+				this.Weight=w+"kg"
+				this.state=s;
+				this.id=id;
+				this.person_fn=function(){
+					console.log('名字',this.name,'身份证',this.id,'国家',this.state)
+				}
+			}
+			var fn=new Person('小明',170,70,'中国','51309xxxxxxxxxxxxxxxx');
+			fn.person_fn();
+			//5.判断函数形参与实参必须一样.
+			function argument(a,b,c){
+				if(arguments.length==argument.length){
+					alert('恭喜你成功调用')
+				}else{
+					alert('调用失败')
+				}
+			}
+			argument(1,2,3);
+		</script>
+	</body>
+</html>

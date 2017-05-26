@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--1.简述call,apply,bind方法的区别
+			//call apply bind 三个方法都是改变this指向.
+			//而call与apply改变对象方法this指向新的对象后立即执行,
+				//call与apply不同点在于两个传参的方式不同.
+					//call apply第一个参数都是一个对象.
+					//claa第一个参数后面的参数都是对象方法所需的参数.
+					//apply第一个参数后面的参数都是对象方法所需的参数的数组
+			//bind 方法是获得对象方法this指向新的对象,函数体.
+			
+			3.把课堂继承的代码敲一遍.
+		-->
+		<script type="text/javascript" charset="utf-8">
+			//2.把使用封装的方式定义一个商品类型(属性不少于5个)
+			var Goods=(function(){
+				return function(n,u,d,d){
+				var name=n;
+				var cost=u;
+				this.price=cost*4+"元";
+				var brand=d;
+				var dates=d;
+				}
+			}())
+		console.log(new Goods("小米",500).price);
+		</script>
+	</body>
+</html>

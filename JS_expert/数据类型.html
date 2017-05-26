@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script styp="text/javascript">
+    var a ='1';
+    var opj={
+        name:"小强"
+    }
+    function fn(opj){
+        a='2'
+        console.debug("基本"+a);
+       var opjs=opj;
+       opjs.name="小米";
+        console.debug("引用"+opjs.name);//引用数据类型赋值是把指针赋它
+    }
+    //基本数据类型有
+    //引用数据类型有 对象 数组 函数
+    console.debug("普通"+a);//基本数据类型是把它复制以份*****基本数据存放在栈中----引用数据类型放在堆中
+    fn(opj);
+    
+</script>
+</body>
+</html>

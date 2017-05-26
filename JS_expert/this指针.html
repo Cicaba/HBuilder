@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this指针</title>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			//构造方法
+			/*(function(n,g){
+				this.name=n;
+				this.age=g;
+				this.action = function (){
+					console.log(this.name,"回家了","this",this)
+				}
+				action()
+			}("小米"));				//如果有对象调用那么就指向这个对象
+			console.log(window.name);//this默认指向window.*/
+			console.log("********************************************************************************");	
+			(function(){
+				function fn(n,g){
+					this.name=n;
+					this.action = function (){
+						console.log(this.name,"回家了","this",this)
+					}	
+				};	
+				function fn1(n,g){
+					this.name=n;
+					this.action1 = function (){
+						console.log(this.name,"到学校了","this",this)
+					}	
+				};
+				var obj=new fn("小米")
+				obj.action();
+				var obj1=new fn1("魅族");
+				obj1.action1.call(obj);//obj借到obj1的方法了,就是改变里obj的this指针;
+			})();
+			console.log("********************************************************************************");
+			//需求在arguments对象上借一个array的reverse()
+				(function(){
+					//arguments.reverse=[].reverse;
+					console.log([].reverse.apply(arguments));
+					//console.error(arguments.reverse());
+				}(1,2,3));
+			console.log("********************************************************************************");
+			//需求在arguments对象上借一个string的slice()
+			(function() {
+				console.log("arguments".slice());
+				console.log([].slice.call(arguments));
+			}(1, 2, 3))
+			console.log("********************************************************************************");
+			//使用call方法调用匿名函数
+			(function() {
+				var animals = [{
+					species: '猫',
+					name: '小米'
+				}, {
+					species: '狗',
+					name: '魅族'
+				}];
+				for(var i = 0; i < animals.length; i++) {
+					(function(i) {
+						this.print = function() {
+							console.log('#' + i + ' ' + this.species + ': ' + this.name);
+						}
+						this.print();
+					}).call(animals[i], i);
+				} 
+			}())
+			console.log("************************************************************************");
+			//call apply bind 三个方法都是改变this指向.
+			//而call与apply改变对象方法this指向新的对象后立即执行,
+				//call与apply不同点在于两个传参的方式不同.
+					//call apply第一个参数都是一个对象.
+					//claa第一个参数后面的参数都是对象方法所需的参数.
+					//apply第一个参数后面的参数都是对象方法所需的参数的数组
+			//bind 方法是获得对象方法this指向新的对象,函数体.
+			console.log("*************************************************************************");
+			//this在Jquery中指向jquery对象,只是在each中指向dom
+		</script>
+	</body>
+</html>

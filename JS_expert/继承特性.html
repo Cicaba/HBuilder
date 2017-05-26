@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>继承特性</title>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+			(function(){
+				function Foo(n,a){
+					this.name=n;
+					this.age=a;
+					this.action=function(){
+						console.debug(this.name,this.age);
+					}
+				}
+				function Bua(){
+					Foo.apply(this,arguments);//这里Bua函数,把Foo函数的this指针指向了Bua函数,结果就是我调用Bua函数相当调用了Foo(最终实现Bua函数继承了Foo函数的属性和方法)
+					
+				}
+				console.log("没有继承前",new Bua());
+				Bua.prototype=new Foo();			//会造成Bua函数的constructor丢失;原因是因为Bua的原型被new Foo()这个实例给重新定义了.而new Foo()这个实例没上没有constructor,是在new Foo()的原型上.
+				Bua.prototype.constructor=Bua;		//重新定义Bua函数的constructor//会产生垃圾属性和方法
+				console.log("继承原型连后",new Bua());
+				new Bua("小明",18).action();
+				console.log("*************************************************************************");
+				//Object.create(prototype, descriptors) ：创建一个具有指定原型且可选择性地包含指定属性的对象;
+				//(ES6的属性部分浏览器不支持)Object.create(类.原型,{constructor : {value:Bua}})返回一个新的对象.这个对象就是某个类.原型.
+				//第一的参数是一个类的原型,第二个参数是一个对象,这个对象是你要添加的属性:而属性值又是一个对象{value:Bua};
+				console.log("Object.create创建一个具有指定原型且可选择性地包含指定属性的对象",Object.create(Foo.prototype,{constructor : {value:Bua}}));
+			})();
+			
+		</script>	
+	</body>
+</html>

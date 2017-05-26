@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<script type="text/javascript">
+    //使用JSON创建一个员工对象（要求有姓名、年龄、部门和爱好）
+    (function () {
+        var jsons={
+            "name":"小王",
+            "age":22,
+            "section":{
+                "name":"development division",
+                "fn":function () {
+                }
+            },
+            "hobby":["看书","lol","看片"]
+        }
+    })();
+
+    //************************************************
+    //2.简述JS编译器执行的原理（吹牛）
+
+    //我们javascript是一门解释型脚本语言,它一般执行在含有Javascript引擎的浏览器上,
+    //分为两个阶段第一个阶段是预编译阶段,主要就是在上下文中声明变量.
+    //第二个阶段就是执行阶段,主要就是变量的赋值和运算.
+    //************************************************
+    //3.简述常见的两种作用域
+
+    //1.全局作用域,就是在全局的对象.
+    //2.局部作用域,也就是函数作用域.
+    //************************************************
+    //4.使用递归来完成一个JSON字符串的属性增加
+    (function () {
+       var he=function (n) {
+           if(n>0){                                 //递归点(什么时候调用自己计算)
+                return n+arguments.callee(n-1)
+           }else{                                   //递归出口
+               return n;
+           }
+       };
+       console.log(he(100));
+    })();
+    //************************************************
+    //5.利用闭包解决循环的作用域问题
+    (function () {
+        for(var i =0; i<20;i++){
+            (function(i){
+                console.log(i);
+            }(i));
+        }
+    })();
+    //************************************************
+    //6.作用域练习：
+    (function () {
+        var a = 100;
+        (function(a){
+            console.log(a);
+            var a = 10;
+        })(a);
+    })();
+</script>
+
+</body>
+</html>

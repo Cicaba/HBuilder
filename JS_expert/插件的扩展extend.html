@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script type="text/javascript" charset="utf-8">
+		//总是保证$指向jQuery
+			undefine="a";
+			console.log(undefine);
+			;(function($,undefine){			//形参默认undefind
+				/*
+				最后一个参数，undefined看起来像是没有给他赋值，
+				但是这要说道低版本的ECMAScript标准中，居然是可以对undefined重新赋值。
+				如果环境中有人恶意的重新定义undefined的值，那么这里就是一个潜在bug的来源。
+				*/
+				$.extend($.fn,{     //我在jQuery类上扩展了一个$.fn的方法,(那就是在原型上扩展的,在原型上扩展,只有jQuery实例可以使用)
+					con:function(){
+						console.log("原型一扩展")
+					}
+				})
+				$("body").con();
+				console.log(undefine);
+			}(jQuery));
+			;(function($,undefine){
+				$.fn.extend({		//$.fn.extend在jQuery原型上扩展.
+					con:function(){
+						console.log("原型二扩展")
+					}
+				});
+				$("body").con();
+			})(jQuery);
+			;(function($,undefine){
+				$.extend({			//类的扩展(静态扩展)
+					con:function(){
+					console.log("类扩展")
+					}
+				})
+				$.con();
+			})(jQuery);
+		/*
+		  
+		this通常用来指向执行当前上下文的对象。
+		而在不同场景下，代表的意义又不一样。
+		在jQuery开发中，this关键字通常引用的是当前正在操作的DOM对象；
+		而在jQuery插件上下文中，this关键字引用的是当前jQuery实例本身。
+		
+		*/
+		</script>
+	</body>
+</html>

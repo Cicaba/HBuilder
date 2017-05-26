@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--对象-->
+		<script type="text/javascript" charset="utf-8">
+			//方法名.length获得方法形参个数
+			//方法名.arguments.length获得方法实参个数
+			//工厂方式对象
+			function fn(a){
+				var obj = new Object();
+				obj.name=a;
+				obj.fn1=function(mi){
+					console.log(obj.name,mi);
+				}
+				return obj;
+			}
+			fn("小").fn1("米");
+			//构造函数对象
+			function Dog(a,g){
+				this.name=a;
+				this.age=g;
+				this.ag=function(){
+					console.log(a,g);
+				}
+			}
+			var dog = new Dog("小米","7");
+			dog.ag();
+			/*
+			    构造函数:
+			    
+			        函数名采用首字母大写（这是一个定义类的标准语法）
+					没有显示创建对象。
+					属性和方法都赋值给了this。this指向new的一个新对象
+					没有return语句
+					
+			   new关键字到底做了什么?
+			   
+			   		  1、创建一个新对象实例  ( new Object())   【自动】
+					  2、将构造函数的作用域赋给新对象（这是this都指向了新对象）  [this => newObject]【自动】
+                      3、执行构造函数中的函数（为这个对象添加属性）  【重要--自己手动编写的逻辑！！！】
+                      4、返回新对象 ( 自动return newObject ) 【自动】
+			 * */
+			var a=new Object();
+			for(var i in Fn){
+				a[i]=Fn[i];
+				//对象获取属性和设置属性有两种方式
+				//用	.方式获取和设置的是固定属性
+				//用[]可以动态获取和设置
+				}
+			console.log('obja',a)
+			/* 对象值拷贝(对象复制)
+			 *   思路:
+			 * 		1.找到源对象
+			 * 		2.识别源对象的所有属性名称和属性的值
+			 * 		3.把源属性名,赋给新对象属性名; 把源属性值,赋给新对象的属性值
+		     */
+		</script>
+	</body>
+</html>
