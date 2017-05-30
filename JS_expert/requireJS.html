@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/require.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+			require.config({
+				baseUrl: "http://127.0.0.1:8020/jS高级学习/js/",
+				paths:{
+					//"jquery":["https://cdn.bootcss.com/jquery/1.12.4/jquery.min","jquery-1.12.4"],
+					"test":"test"
+				}
+			})
+			require(["test"],function($){
+				console.log($);
+			});
+			//***************************************************************
+			setTimeout(function(){
+				console.log("全局",$);
+			},1000);
+			//说明require依赖jquery时,会在创建一个全局jQuery对象.
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

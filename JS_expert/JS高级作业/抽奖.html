@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="../js/jquery-1.12.4.js"></script>
+		<style type="text/css">
+			.box {
+				width: 300px;
+				height: 300px;
+				border: solid 1px #000;
+				margin: 0px auto;
+				margin-top: 150px;
+				cursor: pointer;
+				/*-webkit-touch-callout: none;
+			    -webkit-user-select: none;
+			    -khtml-user-select: none;
+			    -moz-user-select: none;
+			    -ms-user-select: none;*/
+				user-select: none;
+			}
+			
+			ul {
+				margin: 0px;
+				padding: 0px;
+				width: 300px;
+				height: 100px;
+			}
+			
+			li {
+				list-style-type: none;
+				/* display: inline-block;*/
+				float: left;
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<ul>
+				<li style="background: crimson; color: #fff;">1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<ul>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<ul>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+			</ul>
+		</div>
+		<script>
+			/*$(".box").on("click.on", function() {
+							(function(){
+								var $lis = $("li");
+								var i = 0;
+								var isnum;
+								var times = setInterval(function() {
+									if(i === 8) {
+										i = -1;
+									}
+									$lis.css("background", "#fff")
+									i++;
+									if(isnum === 0) {
+										clearInterval(times)
+									}
+									isnum = Math.floor((Math.random() * 10))
+									$lis.eq(i).css("background-color", "crimson");
+								}, 100);
+								return false;
+							}());
+						})*/
+			//*************************************************************************
+
+			;
+			(function($) {
+				$.extend($.fn, {
+					lottery: function() {
+						$(this).on("click", function() {
+							var $lis = $(this).find("li");
+							var i = 0;
+							var isnum;
+							var times = setInterval(function() {
+								if(i === 8) {
+									i = -1;
+								}
+								$lis.css({"background-color":"#fff","color":"#000"})
+								i++;
+								if(isnum === 0) {
+									clearInterval(times)
+								}
+								isnum = Math.floor((Math.random() * 10))
+								$lis.eq(i).css({"background-color":"crimson","color":"#fff"});
+							}, 100);
+							return false;
+						})
+					}
+				});
+			})(jQuery);
+			$(".box").lottery();
+		</script>
+	</body>
+
+</html>

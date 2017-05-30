@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>简单表格</title>
+		<!--<script src="js/jquery-1.12.4.js"></script>
+		<script src="js/mygetjson.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/require.js"></script>
+
+		<!--<script src="js/jquery_mytable.js" type="text/javascript" charset="utf-8"></script>-->
+		<script>
+			require(["js/jquery_mytable"],function ($) {
+                $(".mytable").mytable({url:"data/employee.json"});
+            })
+		</script>
+	</head>
+	<body>
+		<table border="1px" cellspacing="0px" width="800px" align="center" height="300px" class="mytable">
+			<caption>员工信息</caption>
+			<thead>
+				<tr>
+					<th attr="name">姓名</th>
+					<th attr="gender">性别</th>
+					<th attr="age">年龄</th>
+					<th attr="id">ID</th>
+					<th attr="job">职业</th>
+					<th attr="tel">电话</th>
+					<th attr="email">邮箱</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		<!--
+			分析
+				:需一个插件解决在云端动态获取数据并动态添加到表格里;
+				:插件:用户只需输入src的一个参数对象;
+		-->
+		<!--<script type="text/javascript" charset="utf-8">
+			$(".mytable").mytable({url:"data/employee.json"});
+		</script-->>
+	</body>
+</html>

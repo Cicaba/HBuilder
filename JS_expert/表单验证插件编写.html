@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/validate.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/require.js"></script>
+		<script>
+			require.config({
+				baseUrl: "/HTMLdaima/jS高级学习/js/",
+				paths:{
+					//"jquery":["https://cdn.bootcss.com/jquery/1.12.4/jquery.min","jquery-1.12.4"],
+					"validate":"validate"
+				}
+			})
+			require(["validate"],function ($) {
+                $("#fm").validate();
+            })
+		</script>
+	</head>
+	<body>
+		<form action="https://www.baidu.com" method="post" id="fm">
+			<div>用户名:<input type="text" name="yhm" id="yhm" value="" validate="yhm" /></div>
+			<div>密&emsp;码:<input type="password" name="mima" id="mima" value="" validate="mima" /></div>
+			<div>电&emsp;话:<input type="text" name="call" id="call" value="" validate="call" /></div>
+			<div>邮&emsp;箱:<input type="text" name="email" id="email" value="" validate="email" /></div>
+			<input type="submit" value="提交"/>
+		</form>
+
+	</body>
+	<!--
+		需求:
+			用户可以直接调用JQuery方法实现表单验证
+	-->
+	<!--<script type="text/javascript" charset="utf-8">
+		$("#fm").validate();
+	</script>-->
+</html>

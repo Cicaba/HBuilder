@@ -9,6 +9,12 @@
 		<div>0.0</div>
 		<div id="box">0.0</div>
 		<div>0.0</div>
+		<!--
+			1.确定最近的原生事件
+			2.触发原生事件,在事件响应函数中,完成具体情况的判断
+			3.在特定的情况下,通过jQuery的触发器,触发另一个命名(可自定义名称)的事件
+			4.对这个名称,进行事件监听
+		-->
 		<script type="text/javascript" charset="utf-8">
 			(function(){
 				//键盘按下事件自定义
@@ -37,6 +43,7 @@
 					console.log("我是自定义右事件");
 				})
 				//try...catch 语句将能引发错误的代码放在try块中，并且对应一个响应，然后有异常被抛出。
+				console.info($("body"));
 			})();
 		</script>
 	</body>

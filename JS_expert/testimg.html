@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			<img src="img/ok.png" width="100px"/>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			var isok=true;
+			$("div").click(function(){
+				var a=$("div img").attr("src");
+				/*if(a=="img/ok.png"){
+					$("div img").attr("src","img/error.png");
+				}else{
+					$("div img").attr("src","img/ok.png");
+				}*/
+				if(isok){
+					$("div img").attr("src","img/error.png");
+					isok=false;
+				}
+				else{
+					$("div img").attr("src","img/ok.png");
+					isok=true;
+				}
+			})
+		</script>
+	</body>
+</html>
