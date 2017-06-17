@@ -1,0 +1,62 @@
+1. 什么是express框架？
+	基于 Node.js快速创建web项目的框架，还提供了一个非常好用的快速创建项目基础结构的工具—— express-generator。
+	
+2. express-generator 模块【掌握】
+	快速创建项目的基础结构
+	
+	怎么使用？
+		1) 安装 express-generator
+			有网络时： npm i express-generator -g
+			没网络时： 
+				手动将 express命令（express , express.cmd） 放在C盘 ... /npm目录下
+				将 express-generator 文件夹放在 C盘 ... /npm/node_modules/ 目录中
+				
+		2) 使用命令创建一个完整的 express框架项目
+ 				express -e 项目名
+ 
+		3) 安装依赖包
+ 				进入项目文件夹，执行安装命令：
+ 				npm i
+ 
+		4) 监听端口
+			打开 app.js ，添加监听端口的代码
+			
+			app.listen(80,function(){
+				console.log('服务器已开启...');
+			});
+			
+		5) 运行服务器
+			node app.js
+			
+		6) 打开浏览器查看网站是否正常运行
+		
+3. 路由 express.Router类【掌握】
+	路由就是指接收请求，处理数据，响应数据的代码
+
+	总路由	app.js => 处理所有请求
+	分路由	=> 将不同的文件夹的请求交给不同的模块来实现，这就叫分路由
+		./routes/index.js	=> 处理根目录下面的所有请求
+		./routes/users.js	=> 处理/users目录下的所有请求
+		
+4. 请求对象req request
+	1) 接收GET方式传的值【掌握】
+		req.query.参数名
+		
+	2) 接收POST方式传的值【掌握】
+		req.body.参数名
+		
+5. 响应对象res response
+	1) 【掌握】响应数据给浏览器（可以是任意类型的数据，但不能是数字）
+		res.send(数据);
+
+	2) 响应JSON数据给浏览器
+		res.json(JSON数据);
+
+	3) 响应状态码给浏览器
+		res.status(状态码);
+		
+	...
+	
+6. 中间件
+	中间件就是完成某个功能的函数， 函数可以位于客户端和路由之间，也可以位于路由之后。
+	next() 尾函数，如果中间件没有调用尾函数，就不会再执行后面的中间件

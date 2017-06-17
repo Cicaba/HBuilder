@@ -1,0 +1,76 @@
+Nondjs执行时会传入5个参数 require exports module __filename  __dirname
+reqyire查找机制向上查找,最后查询环境变量.
+
+npm 常用命令
+	nmp init 创建一个package.json(描述文件)
+	npm install 安装package的依赖包
+	npm install <name> _save 安装时同时写入package中
+	npm remove <name> -g
+	npm update <name>更新
+	npm link <name>把全局模块复制到当前node_modules里
+	
+	NodeJS中的全局变量   global
+事件编程
+	events模块中的EventEmitter对象，定义了事件对象的基础信息和行为。
+	var EventEmitter = require("events").EventEmitter;
+	//创建一个事件对象
+	var event = new EventEmitter();
+	//注册事件 , "myevent"是事件名。
+	event.on("myevent",function(name){
+	    console.log(name+":hello");
+	});
+	//触发事件. "myevent"触发事件的名称，"二狗"触发事件的参数。
+	event.emit("myevent","二狗");
+
+buffer
+	（1kb=1024byte  1byte=8bit）
+	new buffer()
+	buf.copy(buf1)
+fs模块
+	fs.readFileSync(path,callback)同步读取
+	fs.writeFile(path,data,callback)写
+
+	fs.stat(path,callback)    会将stats类的实例返回给其回调函数
+		stat.isFile()	判断是否为文件
+		stat.isDirectory 判断是否为目录
+	
+	fs.unlink(path,callback)删除文件
+	
+	fs.readdir("./",callback)获取目录中的文件
+
+	fs.rmdir(path,callback)获取目录中的文件
+
+流读写方式
+
+	fs.createReadStream();创建可读流
+	处理流事件 --> data, end, error
+	readerStream.on('data', function(chunk) {
+	   data += chunk;
+	});
+	readerStream.on('end',function(){
+	   console.log(data);
+	});
+	readerStream.on('error', function(err){
+	   console.log(err.stack);
+	});
+
+	fs.createWirteStream()创建一个可以写入的流
+
+	// 使用 utf8 编码写入数据
+	writerStream.write(data,'UTF8');
+	// 标记文件末尾
+	writerStream.end();
+
+	// 处理流事件 --> data, end,error
+	writerStream.on('finish', function() {
+	    console.log("写入完成。");
+	});
+	writerStream.on('error', function(err){
+	   console.log(err.stack);
+	});
+
+链式流pipe
+
+	链式是通过连接输出流到另外一个流并创建多个对个流操作链的机制
+	
+
